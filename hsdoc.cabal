@@ -23,10 +23,15 @@ library
       Text.HsDoc.AST.Figure
       Text.HsDoc.AST.Note
       Text.HsDoc.AST.OrderedList
+      Text.HsDoc.Element
+      Text.HsDoc.Element.Code
+      Text.HsDoc.Element.Figure
   other-modules:
       Paths_hsdoc
   hs-source-dirs:
       src
+  default-extensions:
+      DuplicateRecordFields
   build-depends:
       base >=4.7 && <5
     , text >=1.2 && <2
