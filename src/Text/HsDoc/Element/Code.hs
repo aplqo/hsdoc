@@ -1,4 +1,4 @@
-module Text.HsDoc.Element.Code where
+module Text.HsDoc.Element.Code (Block, Inline) where
 
 import qualified Text.HsDoc.AST as AST
 import Text.HsDoc.AST.Code (Block, Inline)
