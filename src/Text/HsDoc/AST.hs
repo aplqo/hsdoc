@@ -26,7 +26,8 @@ data InlineElem
   | LineBreak
   | Math Text
   | KeyStoke [Text]
-  | RawInline Text
+  | -- | Raw inline. A list of lines, linebreaks should be included. Writer will adjust indention.
+    RawInline [Text]
   | Code Code.Inline
   | Critic Critic.Inline
   | Link
@@ -55,6 +56,8 @@ data BlockElem
       }
   | TaskList [(Bool, [Block])]
   | CriticBlock Critic.Block
+  | -- | Raw block. A list of lines, but no linebreak is added. Writer will adjust indention.
+    RawBlock [Text]
   | NullBlock
 
 data Document = Document
