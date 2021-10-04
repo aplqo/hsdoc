@@ -11,9 +11,15 @@ description: Write document in haskell
 dependencies:
   - base >= 4.7 && < 5
   - text >= 1.2 && < 2
+  - pandoc >= 2.14 && < 3
+  - pandoc-types == 1.22
 
 library:
   source-dirs: src
 
 default-extensions:
   - DuplicateRecordFields
+  - OverloadedStrings
+  - MultiParamTypeClasses
+  - TypeFamilies
+  - FlexibleInstances

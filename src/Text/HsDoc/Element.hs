@@ -11,23 +11,25 @@ import Text.HsDoc.AST
 
 data State = State
 
-class ToDocument a where
-  toDocument :: State -> a -> Document
+data family Config s
 
-class ToInline a where
-  toInline :: State -> a -> Inline
+class ToDocument d e where
+  toDocument :: Config d -> State -> e -> Document
 
-class ToInlines a where
-  toInlines :: State -> a -> [Inline]
+class ToInline d e where
+  toInline :: Config d -> State -> e -> Inline
 
-class ToBlock a where
-  toBlock :: State -> a -> Block
+class ToInlines d e where
+  toInlines :: Config d -> State -> e -> [Inline]
 
-instance ToInline () where
-  toInline _ _ = (Meta, NullInline)
+class ToBlock d e where
+  toBlock :: Config d -> State -> e -> Block
 
-instance ToInlines () where
-  toInlines _ _ = [(Meta, NullInline)]
+instance ToInline d () where
+  toInline _ _ _ = (Meta, NullInline)
 
-instance ToBlock () where
-  toBlock _ _ = (Meta, NullBlock)
+instance ToInlines d () where
+  toInlines _ _ _ = [(Meta, NullInline)]
+
+instance ToBlock d () where
+  toBlock _ _ _ = (Meta, NullBlock)

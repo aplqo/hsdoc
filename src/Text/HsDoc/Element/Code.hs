@@ -8,11 +8,11 @@ import Text.HsDoc.Element
     ToInlines (..),
   )
 
-instance ToInline Inline where
-  toInline s c = (AST.Meta, AST.Code c)
+instance ToInline d Inline where
+  toInline _ _ c = (AST.Meta, AST.Code c)
 
-instance ToInlines Inline where
-  toInlines s c = [(AST.Meta, AST.Code c)]
+instance ToInlines d Inline where
+  toInlines _ _ c = [(AST.Meta, AST.Code c)]
 
-instance ToBlock Block where
-  toBlock s c = (AST.Meta, AST.CodeBlock c)
+instance ToBlock d Block where
+  toBlock _ _ c = (AST.Meta, AST.CodeBlock c)

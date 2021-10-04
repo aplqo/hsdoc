@@ -30,7 +30,7 @@ data InlineElem
   | Code Code.Inline
   | Critic Critic.Inline
   | Link
-      { alt :: [Inline],
+      { text :: [Inline],
         target :: Text
       }
   | Figure Figure.Figure
