@@ -31,7 +31,8 @@ data InlineElem
   | Code Code.Inline
   | Critic Critic.Inline
   | Link
-      { text :: [Inline],
+      { title :: Maybe Text,
+        alt :: Maybe [Inline],
         target :: Text
       }
   | Figure Figure.Figure

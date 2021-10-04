@@ -10,7 +10,8 @@ import Text.HsDoc.Element
   )
 
 data Figure a = Figure
-  { path :: Text,
+  { title :: Maybe Text,
+    path :: Text,
     alt :: Maybe a,
     align :: AF.Align
   }
@@ -20,7 +21,8 @@ instance ToInlines d e => ToInline d (Figure e) where
     ( AST.Meta,
       AST.Figure
         AF.Figure
-          { path = path f,
+          { title = title f,
+            path = path f,
             alt = toInlines c s <$> alt f,
             align = align f
           }
