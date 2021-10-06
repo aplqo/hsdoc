@@ -9,8 +9,10 @@ data Block = Block
     highlight :: [Int],
     code :: Text
   }
+  deriving (Show)
 
 data Inline = Inline
   { language :: Maybe Text,
     code :: Text
   }
+  deriving (Show)

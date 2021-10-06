@@ -3,7 +3,7 @@ module Text.HsDoc.AST.Admonition where
 import Data.Text (Text)
 import {-# SOURCE #-} Text.HsDoc.AST (Block)
 
-data Display = NotFoldable | Folded | Unfolded
+data Display = NotFoldable | Folded | Unfolded deriving (Show)
 
 type Type = Text
 
@@ -13,3 +13,4 @@ data Admonition = Admonition
     display :: Display,
     body :: [Block]
   }
+  deriving (Show)

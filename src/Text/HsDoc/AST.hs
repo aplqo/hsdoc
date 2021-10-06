@@ -8,7 +8,7 @@ import qualified Text.HsDoc.AST.Figure as Figure
 import qualified Text.HsDoc.AST.Note as Note
 import qualified Text.HsDoc.AST.OrderedList as OrderedList
 
-data Meta = Meta
+data Meta = Meta deriving (Show)
 
 type Inline = (Meta, InlineElem)
 
@@ -38,6 +38,7 @@ data InlineElem
   | Figure Figure.Figure
   | Note Note.Note
   | NullInline
+  deriving (Show)
 
 type Block = (Meta, BlockElem)
 
@@ -60,6 +61,7 @@ data BlockElem
   | -- | Raw block. A list of lines, but no linebreak is added. Writer will adjust indention.
     RawBlock [Text]
   | NullBlock
+  deriving (Show)
 
 data Document = Document
   { title :: Text,
@@ -68,3 +70,4 @@ data Document = Document
     body :: [Block],
     subtree :: [Document]
   }
+  deriving (Show)

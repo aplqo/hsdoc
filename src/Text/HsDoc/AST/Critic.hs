@@ -11,6 +11,7 @@ data Base a
       { from :: [a],
         to :: [a]
       }
+  deriving (Show)
 
 type Block = Base AST.Block
 
