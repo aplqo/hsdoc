@@ -28,12 +28,7 @@ toBlockFromCon con@(RecC name fields) trans =
                map
                  ( \(n, _, _) ->
                      [|
-                       ( text
-                           $( let nm = nameBase n
-                               in litE $
-                                    stringL $
-                                      M.findWithDefault nm nm trans
-                            ),
+                       ( text $(getRenamedLit n trans),
                          [toBlocks c s $(varE $ baseName n)]
                        )
                        |]
