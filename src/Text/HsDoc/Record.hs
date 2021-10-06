@@ -20,8 +20,6 @@ import Text.HsDoc.Types (RenameTab)
 
 type AnonRec = (TypeQ, ExpQ, DecsQ)
 
-type DerivFunc = DecQ -> RenameTab -> DecsQ
-
 data Value = E TypeQ ExpQ | N AnonRec
 
 type NamedVal = (Maybe String, Value)
