@@ -1,5 +1,7 @@
 module Text.HsDoc.AST.OrderedList where
 
+import Data.Default
+
 data NumStyle
   = DefaultStyle
   | Example
@@ -23,3 +25,11 @@ data Attrib = Attrib
     delim :: NumDelim
   }
   deriving (Show)
+
+instance Default Attrib where
+  def =
+    Attrib
+      { start = 1,
+        style = DefaultStyle,
+        delim = DefaultDelim
+      }

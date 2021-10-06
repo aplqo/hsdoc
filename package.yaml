@@ -15,6 +15,7 @@ dependencies:
   - pandoc-types == 1.22
   - template-haskell >= 2 && < 3
   - hashmap >= 1 && < 2
+  - data-default < 1
 
 library:
   source-dirs: src
