@@ -13,6 +13,8 @@ dependencies:
   - text >= 1.2 && < 2
   - pandoc >= 2.14 && < 3
   - pandoc-types == 1.22
+  - template-haskell >= 2 && < 3
+  - hashmap >= 1 && < 2
 
 library:
   source-dirs: src
@@ -22,4 +24,5 @@ default-extensions:
   - OverloadedStrings
   - MultiParamTypeClasses
   - TypeFamilies
+  - DefaultSignatures
   - FlexibleInstances
