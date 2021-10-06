@@ -28,5 +28,4 @@ instance ToInlines d e => ToInline d (Figure e) where
           }
     )
 
-instance ToInlines d e => ToInlines d (Figure e) where
-  toInlines c s f = [toInline c s f]
+instance ToInlines d e => ToInlines d (Figure e)
