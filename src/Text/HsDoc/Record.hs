@@ -40,14 +40,26 @@ n .=> v = (n, (Nothing, v))
 record :: String -> [Field] -> AnonRec
 record name = recordDeriv name []
 
-type FieldInfo = ([VarBangTypeQ], [(String, String)], [FieldExpQ], DecsQ)
+type FieldInfo =
+  ( [VarBangTypeQ],
+    [(String, String)],
+    [FieldExpQ],
+    DecsQ
+  )
 
 recordDeriv :: String -> [DerivFunc] -> [Field] -> AnonRec
 recordDeriv name deriv fields =
   let (f, ann, v, ds) = foldr collect ([], [], [], mempty) fields
       nm = mkName name
       annMap = fromList ann
-      def = dataD (cxt []) nm [] Nothing [recC (mkName name) f] []
+      def =
+        dataD
+          (cxt [])
+          nm
+          []
+          Nothing
+          [recC (mkName name) f]
+          [derivClause Nothing [[t|Show|]]]
       drv = mconcat $ map (\f -> f def annMap) deriv
    in ( conT nm,
         recConE nm v,
