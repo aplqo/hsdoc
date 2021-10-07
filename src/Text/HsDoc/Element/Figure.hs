@@ -11,7 +11,7 @@ import Text.HsDoc.Element
 
 data Figure a = Figure
   { title :: Maybe Text,
-    path :: Text,
+    target :: Text,
     alt :: Maybe a,
     align :: AF.Align
   }
@@ -22,7 +22,7 @@ instance ToInlines d e => ToInline d (Figure e) where
       AST.Figure
         AF.Figure
           { title = title f,
-            path = path f,
+            target = target f,
             alt = toInlines c s <$> alt f,
             align = align f
           }

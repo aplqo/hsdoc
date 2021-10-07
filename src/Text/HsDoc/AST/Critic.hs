@@ -5,8 +5,10 @@ import {-# SOURCE #-} qualified Text.HsDoc.AST as AST
 data Base a
   = Insert [a]
   | Delete [a]
-  | Highlight [a]
-  | Comment [a]
+  | Highlight
+      { body :: [a],
+        comment :: Maybe [a]
+      }
   | Substitution
       { from :: [a],
         to :: [a]

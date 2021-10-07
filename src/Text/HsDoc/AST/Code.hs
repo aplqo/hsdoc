@@ -6,6 +6,7 @@ import Data.Text (Text)
 data Block = Block
   { language :: Maybe Text,
     lineNum :: Bool,
+    startNum :: Maybe Int,
     highlight :: [Int],
     code :: Text
   }

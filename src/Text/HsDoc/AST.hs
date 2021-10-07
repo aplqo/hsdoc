@@ -25,7 +25,7 @@ data InlineElem
   | SoftBreak
   | LineBreak
   | Math Text
-  | KeyStoke [Text]
+  | Keystroke [Text]
   | -- | Raw inline. A list of lines, linebreaks should be included. Writer will adjust indention.
     RawInline [Text]
   | Code Code.Inline
@@ -51,7 +51,7 @@ data BlockElem
   | BulletList [[Block]]
   | OrderedList OrderedList.Attrib [[Block]]
   | DefinitionList [([Inline], [[Block]])]
-  | HorzontalRule
+  | HorizontalRule
   | MathBlock
       { wrap :: Bool,
         body :: [Text]
