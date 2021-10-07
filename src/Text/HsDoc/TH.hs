@@ -4,8 +4,10 @@ module Text.HsDoc.TH
   ( DerivFunc,
     deriv,
     baseName,
+    decToName,
     getRename,
     getRenamedLit,
+    conPattern,
   )
 where
 
@@ -34,6 +36,10 @@ getDataDec n = do
 baseName :: Name -> Name
 baseName = mkName . nameBase
 
+decToName :: Dec -> Q Name
+decToName (DataD _ name _ _ _ _) = return name
+decToName _ = fail "Not supported type"
+
 getRename :: Name -> RenameTab -> String
 getRename n t =
   let bn = nameBase n
@@ -41,6 +47,12 @@ getRename n t =
 
 getRenamedLit :: Name -> RenameTab -> ExpQ
 getRenamedLit n t = litE $ stringL $ getRename n t
+
+conPattern :: Con -> PatQ
+conPattern (RecC name fields) =
+  recP name $
+    fmap (\(n, _, _) -> fieldPat n $ varP $ baseName n) fields
+conPattern _ = fail "Only record is supported"
 
 deriv :: Name -> [DerivFunc] -> DecsQ
 deriv n fs = do
