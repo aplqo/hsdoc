@@ -1,5 +1,6 @@
 module Text.HsDoc.Element where
 
+import Data.Text (Text)
 import Text.HsDoc.AST
   ( Block,
     BlockElem (Plain),
@@ -13,7 +14,7 @@ data State = State
 data family Config s
 
 class ToDocument d e where
-  toDocument :: Config d -> State -> e -> Document
+  toDocument :: Text -> Config d -> State -> e -> Document
 
 class ToInline d e where
   toInline :: Config d -> State -> e -> Inline
